@@ -1,8 +1,8 @@
 CC=g++
-CXXFLAG=-Wall
+CXXFLAG=-Wall -std=c++11
 EXEC_TEST=test-calculator
 EXEC_PROG=calculator
-EXEC_ALL=test-calculator calculator
+EXEC_ALL=test-calculator
 
 ifneq ("$(wildcard .depend)","")
 FILE_EXISTS = 1
@@ -12,7 +12,7 @@ ifeq ($(FILE_EXISTS),)
 all::
 	@echo "Execute in first : make depend"
 else
-all:: $(EXEC_PROG)
+all:: $(EXEC_ALL)
 endif
 
 depend::
@@ -23,10 +23,9 @@ depend::
 
 test:: $(EXEC_TEST)
 
-calculator: calculator.o main.o pile.o
-	$(CC) -o $@ $^
 
-test-calculator: CSVParser.o Person.o Fraction.o TestCSVParser.o
+
+test-calculator: TestCalculator.o calculator.o
 	$(CC) -o $@ $^
 
 
