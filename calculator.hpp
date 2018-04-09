@@ -15,9 +15,10 @@ const map<string,int> priority_op;
 const string op_size_1("+ - / * ^ % !");
 const string op_size_2("ln");
 const string op_size_3("exp cos sin tan log");
-const string op_size_4("sqrt");
+const string op_size_4("sqrt Fact");
 const string op_size_5("arccos arcsin arctan");
 
+int factoriel(int number); // Calculer le factoriel d'un nom, (le factroriel d'un nombre négatif n'existe pas)
 
 class Calculator{
 	private:
@@ -59,5 +60,4 @@ class Calculator{
 		string getCalcul();
 		string getResult();
 };
-
 #endif

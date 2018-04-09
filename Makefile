@@ -1,4 +1,3 @@
-##
 CC=g++
 CXXFLAG=-Wall -std=c++11
 EXEC_TEST=test-calculator

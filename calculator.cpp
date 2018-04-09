@@ -19,6 +19,7 @@ Calculator::Calculator(string calcul){
 	this->calcul=calcul;
 	this->calc_postfix=new list<string>;
 	this->bad_input();
+
 	if(this->calcul_ok){
 		this->calc_to_postfix();
 		/*list<string> cp_calc_postfix=*calc_postfix;
@@ -102,6 +103,7 @@ void Calculator::bad_input(){
 			p.pop();
 			f_operator=false;
 			f_point=false;
+
 		}
 		else if(op_size_1.find(this->calcul.at(i)) != string::npos && !f_operator) {f_operator=true;f_point=false;}
 		else if(op_size_2.find(this->calcul.substr(i,2)) != string::npos) {i+=1;f_operator=true;f_point=false;}
@@ -166,6 +168,27 @@ list<string> Calculator::split_calc(string s){
 
 //////////////////////////////////////////////////////////////////////////////
 
+int factoriel(int number)
+{
+	int resulatfactoriel=1;
+
+	if(number==0)
+		return resulatfactoriel=1;
+
+	else if(number>0)
+	{
+		for(int i=1;i<=number;i++)
+		{
+			resulatfactoriel=resulatfactoriel * i;
+
+		}
+	}
+	else
+	{
+		std::cout << "A factoriel of negatif number dosen't existe" << std::endl;
+	}		
+return resulatfactoriel;
+}
 
 string Calculator::exec_calc(string a, string b, string op){
 	double x(atof(a.c_str())),y(atof(b.c_str()));
@@ -184,6 +207,8 @@ string Calculator::exec_calc(string a, string b, string op){
 	if(op=="arctan") result=atan(x);
 	if(op=="sqrt") result=sqrt(x);
 	if(op=="log") result=log10(x);
+	if(op=="Fact") result=factoriel(x);
+
 	//if(op=="ln") result=ln(x);
 
 	return to_string(result);

@@ -10,6 +10,8 @@
 
 TEST_CASE( "Calculator", "All" ){
 
+
+
 	Calculator c1("5+5");
 	CHECK(c1.getResult() == "10");
 
@@ -34,5 +36,7 @@ TEST_CASE( "Calculator", "All" ){
 	Calculator c8("1203091.380901*1092.109/10902+13092");
 	CHECK(c8.getResult() == "133611.80599");
 
+	Calculator c9("Fact(3)");
+	CHECK(c9.getResult() == "6");
 
 }
