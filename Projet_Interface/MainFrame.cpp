@@ -175,7 +175,7 @@ MainFrame::MainFrame(const wxString title) : wxFrame(NULL,wxID_ANY,title){
 
 	btn0 = new wxButton(panel, ID_BTN_TAUX, _T("0"), wxPoint(10,240), wxSize(50,30)); // Création du bouton "Pourcent"
 	btnPoint = new wxButton(panel, ID_BTN_VALIDER, _T("."), wxPoint(65,240), wxSize(50,30)); // Création du bouton "CE"
-	btnVide3 = new wxButton(panel, ID_BTN_QUITTER, _T(" "), wxPoint(120,240), wxSize(50,30)); // Création du bouton "C"
+	btnTiret = new wxButton(panel, ID_BTN_QUITTER, _T("( - )"), wxPoint(120,240), wxSize(50,30)); // Création du bouton "C"
 	btnVide4 = new wxButton(panel, ID_BTN_QUITTER, _T(" "), wxPoint(175,240), wxSize(50,30)); // Création du bouton "Delete"
 	btnEgal = new wxButton(panel, ID_BTN_QUITTER, _T("="), wxPoint(230,240), wxSize(50,30)); // Création du bouton "Diviser"
 
@@ -183,7 +183,7 @@ MainFrame::MainFrame(const wxString title) : wxFrame(NULL,wxID_ANY,title){
 	sizer_boutons->AddSpacer(5); // Ajout d'un espace entre les deux boutons
 	sizer_boutons->Add(btnPoint, 0); //Ajoute boutton CE
 	sizer_boutons->AddSpacer(5); // Ajout d'un espace entre les deux boutons
-	sizer_boutons->Add(btnVide3, 0); //Ajoute boutton C
+	sizer_boutons->Add(btnTiret, 0); //Ajoute boutton C
 	sizer_boutons->AddSpacer(5); // Ajout d'un espace entre les deux boutons
 	sizer_boutons->Add(btnVide4, 0); //Ajoute boutton Delete
 	sizer_boutons->AddSpacer(5); // Ajout d'un espace entre les deux boutons

@@ -22,7 +22,7 @@ class MainFrame : public wxFrame{ //dérivée de wxFrame
 		wxButton *btnVide,*btnVide2,*btnSin1,*btnCos1,*btnTan1,*btnLn,*btnExp,*btnSin,*btnCos,*btnTan;
 		wxButton *btnLog,*btnPuiss,*btnFact,*btnRacine,*btnPi,*btn7,*btn8,*btn9,*btnDel,*btnAc;
 		wxButton *btn4,*btn5,*btn6,*btnX,*btnDiv,*btn1,*btn2,*btn3,*btnPlus,*btnMoins;
-		wxButton *btn0,*btnPoint,*btnVide3,*btnVide4,*btnEgal;
+		wxButton *btn0,*btnPoint,*btnTiret,*btnVide4,*btnEgal;
 
 		
 		void OnButtonValiderClicked(wxCommandEvent &event);
