@@ -1,19 +1,5 @@
 #include "calculator.hpp"
 
-/*
-priority_op["^"]=6;
-priority_op["exp"]=5;
-priority_op["cos"]=5;
-priority_op["sin"]=5;
-priority_op["tan"]=5;
-priority_op["log"]=5;
-priority_op["ln"]=5;
-priority_op["*"]=3;
-priority_op["/"]=3;
-priority_op["+"]=2;
-priority_op["-"]=2;
-priority_op["("]=1;
-*/
 
 Calculator::Calculator(string calcul){
 	this->calcul=calcul;
