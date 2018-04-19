@@ -285,9 +285,16 @@ void MainFrame::OnButton_PD_Clicked(wxCommandEvent &event){
 	calcul+=")";
 }
 void MainFrame::OnButton_DEL_Clicked(wxCommandEvent &event){
-	calcul.pop_back();
-	txtCalcInput->Clear();
-	*txtCalcInput << calcul;
+
+	if(calcul==""){
+
+	}
+	else{
+		calcul.pop_back();
+		txtCalcInput->Clear();
+		*txtCalcInput << calcul;	
+	}
+	
 }
 void MainFrame::OnButton_AC_Clicked(wxCommandEvent &event){
 	txtCalcInput->Clear();
