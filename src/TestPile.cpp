@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN
-#include "catch.hpp"
+#include "../headers/catch.hpp"
 
-#include "Pile.hpp"
+#include "../headers/Pile.hpp"
 #include <string>
 
 

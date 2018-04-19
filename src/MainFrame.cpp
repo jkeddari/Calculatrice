@@ -1,4 +1,4 @@
-#include "MainFrame.hpp"
+#include "../headers/MainFrame.hpp"
 
 MainFrame::~MainFrame(){}
 

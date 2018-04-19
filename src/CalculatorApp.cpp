@@ -1,5 +1,5 @@
 // On appelle le fichier de déclaration de notre classe
-#include "CalculatorApp.hpp"
+#include "../headers/CalculatorApp.hpp"
 
 
 IMPLEMENT_APP(MyApp); //Macro redirige le main

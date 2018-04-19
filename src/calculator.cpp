@@ -1,4 +1,4 @@
-#include "calculator.hpp"
+#include "../headers/calculator.hpp"
 
 
 Calculator::Calculator(string calcul){
