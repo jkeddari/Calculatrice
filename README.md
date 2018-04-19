@@ -10,6 +10,6 @@ executer "make" pour compiler
 Puis "./calculator" pour lancer le programme
 
 TEST
-Pour gÃnerer les programmes test
+Pour génerer les programmes test
 exectuer : "make test" les tests seront dans le dossier test-bin/ 
 
