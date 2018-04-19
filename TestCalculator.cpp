@@ -61,6 +61,12 @@ TEST_CASE( "Calculator", "All" ){
 	Calculator c16("2*10");
 	CHECK(c16.getResult() == "20");
 
+	Calculator c17("fact(3.5)");
+	CHECK(c17.getResult() == "3.323351");
+
+	Calculator c18("fact(4.5)");
+	CHECK(c18.getResult() == "11.631728");
+
 
 
 }

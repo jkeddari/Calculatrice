@@ -24,27 +24,34 @@ void Priority::fill_priority(){
 	op["("]=1;
 }
 
-
-int factoriel(int number)
+double factoriel(long double n)
 {
-	int resulatfactoriel=1;
+   double resultat;
 
-	if(number==0)
-		return resulatfactoriel=1;
-
-	else if(number>0)
-	{
-		for(int i=1;i<=number;i++)
-		{
-			resulatfactoriel=resulatfactoriel * i;
-
-		}
+   if(n==floor(n))
+   {
+	   if (n < 0) 
+	   {
+	      exit (EXIT_FAILURE);
+	   }
+	   else if (n == 1 || n == 0)
+	   {
+	      return 1;
+	   }
+	    resultat= (n * factoriel (n - 1));
 	}
-	else{
+
+   else if (n!=floor(n)) 
+   {
+   	 resultat=tgammal(n);
+   }
+   
+   	else{
 		throw Erreur(1,"Synthaxe Error",2);
 	}
-return resulatfactoriel;
+   return resultat;   
 }
+
 
 string exec_calc(string a, string b, string op){
 	double x(atof(a.c_str())),y(atof(b.c_str()));

@@ -21,7 +21,7 @@ struct Priority{
 };
 
 
-int factoriel(int number); // Calculer le factoriel d'un nom, (le factroriel d'un nombre négatif n'existe pas)
+double factoriel(long double n); // Calculer le factoriel d'un nombre, (le factroriel d'un nombre négatif n'existe pas)
 bool is_operator(string s); //Test si le paramètre est un operateur
 bool is_operand(string s); //Test si l'operand est un nombre
 /*********************************************************************************
