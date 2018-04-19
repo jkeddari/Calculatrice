@@ -36,7 +36,31 @@ TEST_CASE( "Calculator", "All" ){
 	Calculator c8("1203091.380901*1092.109/10902+13092");
 	CHECK(c8.getResult() == "133611.80599");
 
-	Calculator c9("Fact(3)");
+
+	Calculator c9("fact(2*1.5)");
 	CHECK(c9.getResult() == "6");
+
+	Calculator c10("10+99.2-n4+sin(13)+cos(cos(cos(10)))");
+	CHECK(c10.getResult() == "114.405134");
+
+	Calculator c11("n(10+99.2-n4+sin(13)+cos(cos(cos(10))))");
+	CHECK(c11.getResult() == "-114.405134");
+
+	Calculator c12("5n5");
+	CHECK(c12.getResult() == "Synthaxe Error");
+
+	Calculator c13("(n5+5)");
+	CHECK(c13.getResult() == "0");
+
+	Calculator c14("(5+.5+2)");
+	CHECK(c14.getResult() == "7.5");
+
+	Calculator c15("2+3*2");
+	CHECK(c15.getResult() == "8");
+
+	Calculator c16("2*10");
+	CHECK(c16.getResult() == "20");
+
+
 
 }

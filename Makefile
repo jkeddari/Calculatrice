@@ -1,36 +1,38 @@
 CC=g++
 CXXFLAG=-Wall -std=c++11
-EXEC_TEST=test-calculator
+LIBS=`wx-config --cxxflags --libs`
+INCLUDE = -include wx/wx.h
+EXEC_TEST=test-calculator test-pile
 EXEC_PROG=calculator
-EXEC_ALL=test-calculator
+EXEC_ALL=$(EXEC_TEST) $(EXEC_PROG)
 
-ifneq ("$(wildcard .depend)","")
-FILE_EXISTS = 1
-endif
 
-ifeq ($(FILE_EXISTS),)
-all::
-	@echo "Execute in first : make depend"
-else
+
+
 all:: $(EXEC_ALL)
-endif
 
-depend::
-	@$(CC) -MM *.cpp $(CXXFLAG) >| .depend
 
--include .depend
 
 
 test:: $(EXEC_TEST)
 
+calculator:: calculator.o fonction_math.o Pile.o MainFrame.o CalculatorApp.o
+	$(CC) -o $@ $^ $(LIBS)
 
-
-test-calculator: TestCalculator.o calculator.o
+test-calculator: TestCalculator.o calculator.o fonction_math.o Pile.o
 	$(CC) -o $@ $^
 
+test-pile: TestPile.o Pile.o
+	$(CC) -o $@ $^
+
+MainFrame.o: MainFrame.cpp
+	$(CC) -c $^ $(CXXFLAG) $(LIBS)  $(INCLUDE)
+
+CalculatorApp.o: CalculatorApp.cpp
+	$(CC) -c $^ $(CXXFLAG) $(LIBS)  $(INCLUDE)
 
 %.o: %.cpp
-	$(CC) -c $^ $(CXXFLAG) 
+	$(CC) -c $^ $(CXXFLAG)
 
 
 cleaner: clean
@@ -39,5 +41,4 @@ cleaner: clean
 clean: 
 	@rm -f *.o
 	@rm -f *.gch
-	@rm .depend 2>/dev/null
 
