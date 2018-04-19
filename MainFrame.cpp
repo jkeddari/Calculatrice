@@ -286,10 +286,7 @@ void MainFrame::OnButton_PD_Clicked(wxCommandEvent &event){
 }
 void MainFrame::OnButton_DEL_Clicked(wxCommandEvent &event){
 
-	if(calcul==""){
-
-	}
-	else{
+	if(!calcul.empty(){
 		calcul.pop_back();
 		txtCalcInput->Clear();
 		*txtCalcInput << calcul;	
