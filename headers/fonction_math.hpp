@@ -13,6 +13,7 @@ const string op_size_3("exp cos sin tan log");
 const string op_size_4("sqrt fact");
 const string op_size_5("arccos arcsin arctan");
 
+const string PI("3.14159265");
 
 
 struct Priority{

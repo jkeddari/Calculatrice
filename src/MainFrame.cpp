@@ -1,6 +1,12 @@
 #include "../headers/MainFrame.hpp"
 
-MainFrame::~MainFrame(){}
+MainFrame::~MainFrame(){
+	delete(btnLn);
+	delete(btnExp);
+	delete(btnArcCos);
+	delete(btnArcSin);
+	delete(btnArcTan);
+}
 
 MainFrame::MainFrame(const wxString title,const wxPoint& pos, const wxSize& size) : wxFrame(NULL,wxID_ANY,title,pos,size){
 
@@ -8,28 +14,31 @@ MainFrame::MainFrame(const wxString title,const wxPoint& pos, const wxSize& size
 	sizer_principal = new wxBoxSizer(wxVERTICAL);
  
 	txtCalcInput = new wxTextCtrl(this, ID_TXT_CALCINPUT, wxT(""), wxPoint(-1, -1), wxSize(-1, -1), wxTE_RIGHT);
-	//txtCalcInput->SetEditable(false); //On rend la zone de text non editable au clavier
+	txtCalcInput->SetEditable(false); //On rend la zone de text non editable au clavier
 
 
 	sizer_principal->Add(txtCalcInput, 0, wxEXPAND | wxTOP | wxBOTTOM, 4); //Ajout de la zone de txt
 
-	gridButton = new wxGridSizer(7, 5, 3, 3); //Grille 7 lignes 5 colonnes 3 d'espacement en haut et en bas
+	gridButton = new wxGridSizer(8, 5, 3, 3); //Grille 8 lignes 5 colonnes 3 d'espacement en haut et en bas
 
 /***********    L I G N E    1   ******************/
 
-	btnLn = new wxButton(this, ID_BTN_LN, _T("Ln")); // Création du bouton LN
+
+	
+	btnVide1 = new wxStaticText(this, -1, wxT(""));
 	btnExp = new wxButton(this, ID_BTN_EXP, _T("Exp")); // Création du bouton Exp
 	btnArcSin = new wxButton(this, ID_BTN_ARCSIN, _T("ArcSin")); // Création du bouton ArcSin
 	btnArcCos = new wxButton(this, ID_BTN_ARCCOS, _T("ArcCos")); // Création du bouton ArcCos
 	btnArcTan = new wxButton(this, ID_BTN_ARCTAN, _T("ArcTan")); // Création du bouton ArcTan
 
-	btnLn->SetBackgroundColour(wxColour(255,255,0,100));
+	
 	btnExp->SetBackgroundColour(wxColour(255,255,0,100));
 	btnArcTan->SetBackgroundColour(wxColour(255,255,0,100));
 	btnArcSin->SetBackgroundColour(wxColour(255,255,0,100));
 	btnArcCos->SetBackgroundColour(wxColour(255,255,0,100));
 
-	gridButton->Add(btnLn,0,wxEXPAND);
+	
+	gridButton->Add(btnVide1,0,wxEXPAND);
 	gridButton->Add(btnExp,0,wxEXPAND);
 	gridButton->Add(btnArcSin,0,wxEXPAND);
 	gridButton->Add(btnArcCos,0,wxEXPAND);
@@ -39,23 +48,43 @@ MainFrame::MainFrame(const wxString title,const wxPoint& pos, const wxSize& size
 /***********    L I G N E    2   ******************/
 
 	btnLog = new wxButton(this, ID_BTN_LOG, _T("Log")); // Création du bouton Log
-	btnPuiss = new wxButton(this, ID_BTN_PUISS, _T("Puiss")); // Création du bouton Puissance
+	btnLn = new wxButton(this, ID_BTN_LN, _T("Ln")); // Création du bouton LN
 	btnSin = new wxButton(this, ID_BTN_SIN, _T("Sin")); // Création du bouton Sin
 	btnCos = new wxButton(this, ID_BTN_COS, _T("Cos")); // Création du bouton Cos
 	btnTan = new wxButton(this, ID_BTN_TAN, _T("Tan")); // Création du bouton Tan
 
 	btnLog->SetBackgroundColour(wxColour(255,255,0,100));
-	btnPuiss->SetBackgroundColour(wxColour(255,255,0,100));
+	btnLn->SetBackgroundColour(wxColour(255,255,0,100));
 	btnSin->SetBackgroundColour(wxColour(255,255,0,100));
 	btnCos->SetBackgroundColour(wxColour(255,255,0,100));
 	btnTan->SetBackgroundColour(wxColour(255,255,0,100));
 
 
 	gridButton->Add(btnLog,0,wxEXPAND);
-	gridButton->Add(btnPuiss,0,wxEXPAND);
+	gridButton->Add(btnLn,0,wxEXPAND);
 	gridButton->Add(btnSin,0,wxEXPAND);
 	gridButton->Add(btnCos,0,wxEXPAND);
 	gridButton->Add(btnTan,0,wxEXPAND);
+
+/***********    L I G N E    3   ******************/
+	btnModulo = new wxButton(this, -1, _T("%")); // Création du bouton Modulo
+	btnMclear = new wxButton(this, -1, _T("MC")); // Création du bouton MCLEAR
+	btnMplus = new wxButton(this, -1, _T("M+")); // Création du bouton MPLUS
+	btnMreset = new wxButton(this, -1, _T("MR")); // Création du bouton MRESET
+	btnPuiss = new wxButton(this, ID_BTN_PUISS, _T("Puiss")); // Création du bouton Puissance
+
+	btnModulo->SetBackgroundColour(wxColour(255,255,0,100));
+	btnMclear->SetBackgroundColour(wxColour(255,255,0,100));
+	btnMplus->SetBackgroundColour(wxColour(255,255,0,100));
+	btnMreset->SetBackgroundColour(wxColour(255,255,0,100));
+	btnPuiss->SetBackgroundColour(wxColour(255,255,0,100));
+
+
+	gridButton->Add(btnModulo,0,wxEXPAND);
+	gridButton->Add(btnMclear,0,wxEXPAND);
+	gridButton->Add(btnMplus,0,wxEXPAND);
+	gridButton->Add(btnMreset,0,wxEXPAND);
+	gridButton->Add(btnPuiss,0,wxEXPAND);
 
 /***********    L I G N E    4   ******************/
 
@@ -139,7 +168,7 @@ MainFrame::MainFrame(const wxString title,const wxPoint& pos, const wxSize& size
 	btn0 = new wxButton(this, ID_BTN_0, _T("0")); // Création du bouton "Pourcent"
 	btnPoint = new wxButton(this, ID_BTN_POINT, _T(".")); // Création du bouton "CE"
 	btnNeg = new wxButton(this, ID_BTN_NEG, _T("(-)")); // Création du bouton "C"
-	btnVide = new wxStaticText(this, -1, wxT("")); // Création du bouton "Delete"
+	btnVide2 = new wxStaticText(this, -1, wxT("")); // Création du bouton "Delete"
 	btnEgal = new wxButton(this, ID_BTN_EGAL, _T("=")); // Création du bouton "Diviser"	
 
 	btnEgal->SetBackgroundColour(wxColour(0,255,0,100));
@@ -147,7 +176,7 @@ MainFrame::MainFrame(const wxString title,const wxPoint& pos, const wxSize& size
 	gridButton->Add(btn0,0,wxEXPAND);
 	gridButton->Add(btnPoint,0,wxEXPAND);
 	gridButton->Add(btnNeg,0,wxEXPAND);
-	gridButton->Add(btnVide,0,wxEXPAND);
+	gridButton->Add(btnVide2,0,wxEXPAND);
 	gridButton->Add(btnEgal,0,wxEXPAND);
 
 /**************************************************/
@@ -224,6 +253,9 @@ void MainFrame::OnButton_MOINS_Clicked(wxCommandEvent &event){
 	*txtCalcInput << "-";
 	calcul+="-";
 }
+void MainFrame::OnButton_MODULO_Clicked(wxCommandEvent &event){
+	
+}
 void MainFrame::OnButton_POINT_Clicked(wxCommandEvent &event){
 	*txtCalcInput << ".";
 	calcul+=".";
@@ -274,7 +306,7 @@ void MainFrame::OnButton_9_Clicked(wxCommandEvent &event){
 }
 void MainFrame::OnButton_PI_Clicked(wxCommandEvent &event){
 	*txtCalcInput << "PI"; //Affiche PI
-	calcul+="(3.14)"; //Mais ecrit 3.14 entre parenthèse pour protéger la valeur
+	calcul+=PI; //Mais ecrit 3.14 entre parenthèse pour protéger la valeur
 }
 void MainFrame::OnButton_PG_Clicked(wxCommandEvent &event){
 	*txtCalcInput << "(";
@@ -298,10 +330,22 @@ void MainFrame::OnButton_AC_Clicked(wxCommandEvent &event){
 	calcul.clear();
 }
 void MainFrame::OnButton_EGAL_Clicked(wxCommandEvent &event){
-	Calculator c(calcul); //Effectue le calcul
-	txtCalcInput->Clear(); //Efface la zone d'affichage
-	*txtCalcInput << c.getResult(); //Affiche le resultat
-	calcul=c.getResult(); //Stock le resultat dans calcul pour faire un nouveau calcul avec le resultat
+	if(!calcul.empty()){
+		Calculator c(calcul); //Effectue le calcul
+		txtCalcInput->Clear(); //Efface la zone d'affichage
+		*txtCalcInput << c.getResult(); //Affiche le resultat
+		calcul=c.getResult(); //Stock le resultat dans calcul pour faire un nouveau calcul avec le resultat
+	}
+}
+
+void MainFrame::OnButton_MCLEAR_Clicked(wxCommandEvent &event){
+	/*TODO*/
+}
+void MainFrame::OnButton_MPLUS_Clicked(wxCommandEvent &event){
+	/*TODO*/
+}
+void MainFrame::OnButton_MRESET_Clicked(wxCommandEvent &event){
+	/*TODO*/
 }
 
 
@@ -326,6 +370,7 @@ BEGIN_EVENT_TABLE(MainFrame,wxFrame)
 	EVT_BUTTON(ID_BTN_DIV, MainFrame::OnButton_DIV_Clicked)
 	EVT_BUTTON(ID_BTN_PLUS, MainFrame::OnButton_PLUS_Clicked)
 	EVT_BUTTON(ID_BTN_MOINS, MainFrame::OnButton_MOINS_Clicked)
+	EVT_BUTTON(ID_BTN_MODULO, MainFrame::OnButton_MODULO_Clicked)
 
 	EVT_BUTTON(ID_BTN_POINT, MainFrame::OnButton_POINT_Clicked)
 	EVT_BUTTON(ID_BTN_NEG, MainFrame::OnButton_NEG_Clicked)
@@ -348,5 +393,9 @@ BEGIN_EVENT_TABLE(MainFrame,wxFrame)
 	EVT_BUTTON(ID_BTN_DEL, MainFrame::OnButton_DEL_Clicked)
 	EVT_BUTTON(ID_BTN_AC, MainFrame::OnButton_AC_Clicked)
 	EVT_BUTTON(ID_BTN_EGAL, MainFrame::OnButton_EGAL_Clicked)
+
+	EVT_BUTTON(ID_BTN_MPLUS, MainFrame::OnButton_MPLUS_Clicked)
+	EVT_BUTTON(ID_BTN_MCLEAR, MainFrame::OnButton_MCLEAR_Clicked)
+	EVT_BUTTON(ID_BTN_MRESET, MainFrame::OnButton_MRESET_Clicked)
 
 END_EVENT_TABLE()
