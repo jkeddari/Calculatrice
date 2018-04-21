@@ -310,7 +310,7 @@ void MainFrame::OnButton_9_Clicked(wxCommandEvent &event){
 	calcul+="9";
 }
 void MainFrame::OnButton_PI_Clicked(wxCommandEvent &event){
-	*txtCalcInput << "PI"; //Affiche PI
+	*txtCalcInput << wxString::FromUTF8("\xF0\x9D\x9B\x91"); //Affiche PI
 	calcul+=PI; //Mais ecrit 3.14 entre parenthèse pour protéger la valeur
 }
 void MainFrame::OnButton_PG_Clicked(wxCommandEvent &event){
