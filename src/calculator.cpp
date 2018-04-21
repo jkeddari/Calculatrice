@@ -50,7 +50,7 @@ bool Calculator::bad_input(){
 			f_operator=false;
 		}
 		else if(this->calcul.at(i)=='.'){
-			//f_operator=false;
+			if(f_point == true) return false;
 			f_point=true;
 		}
 		else if(this->calcul.at(i)=='.' and f_point )
