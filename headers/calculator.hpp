@@ -17,8 +17,6 @@ class Calculator{
 		string result;
 		list<string> *calc_postfix;
 		
-
-		
 	/***********************************************************************************/
 	/*		M E T H O D E 		I N I T I A L I S A T I O N 	*/
 		bool bad_input(); //Check le calcul

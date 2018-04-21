@@ -12,7 +12,7 @@ enum{
 	ID_BTN_0,ID_BTN_1,ID_BTN_2,ID_BTN_3,ID_BTN_4,
 	ID_BTN_5,ID_BTN_6,ID_BTN_7,ID_BTN_8,ID_BTN_9,ID_BTN_PI,
 	ID_BTN_PD,ID_BTN_PG,
-	ID_BTN_MPLUS, ID_BTN_MRESET, ID_BTN_MCLEAR, 
+	ID_BTN_MPLUS, ID_BTN_MR, ID_BTN_MCLEAR, 
 	ID_TXT_CALCINPUT
 };
 
@@ -37,7 +37,7 @@ class MainFrame : public wxFrame{ //dérivée de wxFrame
 		wxButton *btnX,*btnDiv,*btnPlus,*btnMoins,*btnPoint, *btnNeg, *btnModulo; //Operation de base
 		wxButton *btn0,*btn1,*btn2,*btn3,*btn4,*btn5,*btn6,*btn7,*btn8,*btn9,*btnPi; //Boutton valeurs
 		wxButton *btnPG, *btnPD;
-		wxButton *btnMplus, *btnMreset, *btnMclear;
+		wxButton *btnMplus, *btnMr, *btnMclear;
 		wxStaticText *btnVide1, *btnVide2; //Bouttons vide
 /**********************************************************************************************************/
 
@@ -78,7 +78,7 @@ class MainFrame : public wxFrame{ //dérivée de wxFrame
 		void OnButton_PD_Clicked(wxCommandEvent &event);
 		void OnButton_MPLUS_Clicked(wxCommandEvent &event);
 		void OnButton_MCLEAR_Clicked(wxCommandEvent &event);
-		void OnButton_MRESET_Clicked(wxCommandEvent &event);
+		void OnButton_MR_Clicked(wxCommandEvent &event);
 		
 
 

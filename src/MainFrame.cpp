@@ -71,22 +71,22 @@ MainFrame::MainFrame(const wxString title,const wxPoint& pos, const wxSize& size
 	btnMclear = new wxButton(this, ID_BTN_MCLEAR, _T("MC")); // Création du bouton MCLEAR
 	btnMclear->Disable();
 	btnMplus = new wxButton(this, ID_BTN_MPLUS, _T("M+")); // Création du bouton MPLUS, 
-	btnMreset = new wxButton(this, ID_BTN_MRESET, _T("MR")); // Création du bouton MRESET
-	btnMreset->Disable();
+	btnMr = new wxButton(this, ID_BTN_MR, _T("MR")); // Création du bouton MR
+	btnMr->Disable();
 
 	btnPuiss = new wxButton(this, ID_BTN_PUISS, _T("Puiss")); // Création du bouton Puissance
 
 	btnModulo->SetBackgroundColour(wxColour(255,255,0,100));
 	btnMclear->SetBackgroundColour(wxColour(255,255,0,100));
 	btnMplus->SetBackgroundColour(wxColour(255,255,0,100));
-	btnMreset->SetBackgroundColour(wxColour(255,255,0,100));
+	btnMr->SetBackgroundColour(wxColour(255,255,0,100));
 	btnPuiss->SetBackgroundColour(wxColour(255,255,0,100));
 
 
 	gridButton->Add(btnModulo,0,wxEXPAND);
 	gridButton->Add(btnMclear,0,wxEXPAND);
 	gridButton->Add(btnMplus,0,wxEXPAND);
-	gridButton->Add(btnMreset,0,wxEXPAND);
+	gridButton->Add(btnMr,0,wxEXPAND);
 	gridButton->Add(btnPuiss,0,wxEXPAND);
 
 /***********    L I G N E    4   ******************/
@@ -348,7 +348,7 @@ void MainFrame::OnButton_MCLEAR_Clicked(wxCommandEvent &event){
 	if(!save.empty())
 		{save.clear();}
 		btnMclear->Disable();
-		btnMreset->Disable();
+		btnMr->Disable();
 	//Penser à déactiver un bouton MC dans le cas où y a rien dans la mémoire (regarder comment le déactiver )
 	
 }
@@ -362,14 +362,14 @@ void MainFrame::OnButton_MPLUS_Clicked(wxCommandEvent &event){
 	    	}
 	    	save <<val;
 	    btnMclear->Enable();
-   		btnMreset->Enable();
+   		btnMr->Enable();
 	}	
 }
-void MainFrame::OnButton_MRESET_Clicked(wxCommandEvent &event){
+void MainFrame::OnButton_MR_Clicked(wxCommandEvent &event){
 
 	 //La touche MR permet d'afficher la valeur de la mémoire
    txtCalcInput->SetValue(save);
-   calcul=save; //sauvgarder l'element stoker en mémoire dans Calcul
+   calcul+=save; //sauvgarder l'element stoker en mémoire dans Calcul
 }
 
 
@@ -420,6 +420,6 @@ BEGIN_EVENT_TABLE(MainFrame,wxFrame)
 
 	EVT_BUTTON(ID_BTN_MPLUS, MainFrame::OnButton_MPLUS_Clicked)
 	EVT_BUTTON(ID_BTN_MCLEAR, MainFrame::OnButton_MCLEAR_Clicked)
-	EVT_BUTTON(ID_BTN_MRESET, MainFrame::OnButton_MRESET_Clicked)
+	EVT_BUTTON(ID_BTN_MR, MainFrame::OnButton_MR_Clicked)
 
 END_EVENT_TABLE()
