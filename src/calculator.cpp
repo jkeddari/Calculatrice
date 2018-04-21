@@ -39,8 +39,8 @@ string Calculator::getResult(){
 
 
 bool Calculator::bad_input(){
-	bool f_operator=false, f_point=false, f_par=false;
-	stack<string> p;
+	bool f_operator=true, f_point=false, f_par=false;
+	Pile p;
 
 	//Si on commence par un opérateur simple c'est faux
 	if(op_size_1.find(this->calcul.at(0)) != string::npos) return false;
@@ -58,13 +58,13 @@ bool Calculator::bad_input(){
 
 		else if(this->calcul.at(i) == '('){
 			f_par=true;
-			f_operator=false;
+			//f_operator=false;
 			p.push("(");
 		}
 		else if(this->calcul.at(i) == ')'){
 			if(p.empty()) return false;
 			p.pop();
-			f_operator=false;
+			//f_operator=false;
 			f_point=false;
 		}
 
@@ -76,7 +76,7 @@ bool Calculator::bad_input(){
 		}
 
 		else if(op_size_1_spec.find(this->calcul.at(i)) != string::npos){
-			f_operator=true;
+			//f_operator=true;
 			f_point=false;
 		}
 		else if(op_size_1.find(this->calcul.at(i)) != string::npos && !f_operator){
@@ -84,24 +84,36 @@ bool Calculator::bad_input(){
 			f_point=false;
 		}
 		else if(op_size_2.find(this->calcul.substr(i,2)) != string::npos){
+			if(i>0 and (op_size_1.find(this->calcul.at(i-1)) == string::npos and this->calcul.at(i-1)!='(')){return false;} 
 			i+=1;
+			
 			f_operator=true;
 			f_point=false;
+			
 		}
 		else if(op_size_3.find(this->calcul.substr(i,3)) != string::npos){
+			if(i>0 and (op_size_1.find(this->calcul.at(i-1)) == string::npos and this->calcul.at(i-1)!='(')){return false;} 
 			i+=2;
+			
 			f_operator=true;
 			f_point=false;
+			
 		}
 		else if(op_size_4.find(this->calcul.substr(i,4)) != string::npos){
+			if(i>0 and (op_size_1.find(this->calcul.at(i-1)) == string::npos and this->calcul.at(i-1)!='(')){return false;} 
 			i+=3;
+			
 			f_operator=true;
 			f_point=false;
+			
 		}
 		else if(op_size_5.find(this->calcul.substr(i,5)) != string::npos){
+			if(i>0 and (op_size_1.find(this->calcul.at(i-1)) == string::npos and this->calcul.at(i-1)!='(')){return false;} 
 			i+=4;
+			
 			f_operator=true;
 			f_point=false;
+			
 		}
 		else{
 			return false;
@@ -154,7 +166,7 @@ list<string> Calculator::split_calc(string s){
 
 void Calculator::calc_to_postfix(){
 	list<string> e;
-	stack<string> p;
+	Pile p;
 	string buff;
 
 	Priority priority;
@@ -195,7 +207,7 @@ void Calculator::calc_to_postfix(){
 }
 
 void Calculator::postfix_eval(){
-	stack<string> operandStack;
+	Pile operandStack;
 	string buff, a,b,r;
 
 	while(!this->calc_postfix->empty()){

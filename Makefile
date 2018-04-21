@@ -11,23 +11,22 @@ PATH_HEADERS=headers/
 EXEC_TEST=$(PATH_TEST_BIN)test-calculator $(PATH_TEST_BIN)test-pile
 EXEC_PROG=calculator
 
-SRC= $(wildcard $(PATH_SRC)*.cpp)
-OBJ= $(SRC:.cpp=.o)
-
 
 
 OBJ_TEST_PILE=$(PATH_OBJ)TestPile.o $(PATH_OBJ)Pile.o
 OBJ_TEST_CALCULATOR=$(PATH_OBJ)TestCalculator.o $(PATH_OBJ)calculator.o $(PATH_OBJ)fonction_math.o $(PATH_OBJ)Pile.o
 OBJ_CALCULATOR=$(PATH_OBJ)calculator.o $(PATH_OBJ)fonction_math.o $(PATH_OBJ)Pile.o $(PATH_OBJ)MainFrame.o obj/CalculatorApp.o
 
-DEP_MAINFRAME_OBJ=$(PATH_SRC)MainFrame.cpp $(PATH_SRC)calculator.cpp $(PATH_HEADERS)MainFrame.hpp $(PATH_HEADERS)calculator.hpp
-DEP_CALCULATORAPP_OBJ=$(PATH_SRC)CalculatorApp.cpp $(PATH_SRC)MainFrame.cpp $(PATH_HEADERS)CalculatorApp.hpp $(PATH_HEADERS)MainFrame.hpp
 
+ifneq ("$(wildcard make.d)","")
+all:: $(EXEC_PROG)
+else
 all:: depend $(EXEC_PROG)
+endif
+
 
 depend::
-	@rm -f make.d
-	$(CC) -MM $(LIBS) $(INCLUDE) $(CXXFLAG) $(PATH_SRC)*.cpp >>make.d
+		$(CC) -MM $(LIBS) $(INCLUDE) $(CXXFLAG) $(PATH_SRC)*.cpp >>make.d
 
 -include make.d
 
@@ -37,21 +36,21 @@ calculator:: $(OBJ_CALCULATOR)
 	$(CC) -o $@ $^ $(LIBS)
 
 $(PATH_TEST_BIN)test-calculator: $(OBJ_TEST_CALCULATOR)
-	$(CC) -o $@ $^
+	$(CC) -o $@ $^ $(LIBS)
 
 $(PATH_TEST_BIN)test-pile: $(OBJ_TEST_PILE)
-	$(CC) -o $@ $^
+	$(CC) -o $@ $^ $(LIBS)
 
-$(PATH_OBJ)MainFrame.o: $(DEP_MAINFRAME_OBJ)
-	$(CC) -c  $^ $(CXXFLAG) $(LIBS)  $(INCLUDE)
+$(PATH_OBJ)TestCalculator.o: $(PATH_SRC)TestCalculator.cpp
+	$(CC) -c $^ $(CXXFLAG) 
 	@mv *.o $(PATH_OBJ)
 
-$(PATH_OBJ)CalculatorApp.o: $(DEP_CALCULATORAPP_OBJ)
-	$(CC) -c  $^ $(CXXFLAG) $(LIBS)  $(INCLUDE)
+$(PATH_OBJ)TestPile.o: $(PATH_SRC)TestPile.cpp
+	$(CC) -c $^ $(CXXFLAG) 
 	@mv *.o $(PATH_OBJ)
 
-$(PATH_OBJ)%.o: $(PATH_SRC)%.cpp
-	$(CC) -c  $^ $(CXXFLAG)
+$(PATH_OBJ)%.o: $(PATH_SRC)%.cpp $(PATH_HEADERS)%.hpp
+	$(CC) -c  $< $(CXXFLAG) $(LIBS)  $(INCLUDE)
 	@mv *.o $(PATH_OBJ)
 
 

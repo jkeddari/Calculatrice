@@ -92,7 +92,7 @@ MainFrame::MainFrame(const wxString title,const wxPoint& pos, const wxSize& size
 	btnPD = new wxButton(this, ID_BTN_PD, _T(")")); // Création du bouton )
 	btnFact = new wxButton(this, ID_BTN_FACT, _T("!")); // Création du bouton Factorielle
 	btnRacine = new wxButton(this, ID_BTN_RACINE, _T("Racine")); // Création du bouton RacineCarre
-	btnPi = new wxButton(this, ID_BTN_PI, _T("Pi")); // Création du bouton Pi
+	btnPi = new wxButton(this, ID_BTN_PI, wxString::FromUTF8("\xF0\x9D\x9B\x91")); // Création du bouton Pi
 
 	btnPD->SetBackgroundColour(wxColour(255,255,0,100));
 	btnPG->SetBackgroundColour(wxColour(255,255,0,100));
@@ -312,7 +312,7 @@ void MainFrame::OnButton_PI_Clicked(wxCommandEvent &event){
 }
 void MainFrame::OnButton_PG_Clicked(wxCommandEvent &event){
 	*txtCalcInput << "(";
-	calcul+=")";
+	calcul+="(";
 }
 void MainFrame::OnButton_PD_Clicked(wxCommandEvent &event){
 	*txtCalcInput << ")";

@@ -2,13 +2,11 @@
 #define CALCULATOR_HPP
 
 #include <list>
-#include <stack>
-#include <map>
-#include "Erreur.hpp"
-#include <cmath>
 #include <iostream>
 
 #include "fonction_math.hpp"
+#include "Erreur.hpp"
+#include "Pile.hpp"
 
 using namespace std;
 
