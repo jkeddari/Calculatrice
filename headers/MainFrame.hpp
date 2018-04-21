@@ -12,7 +12,7 @@ enum{
 	ID_BTN_0,ID_BTN_1,ID_BTN_2,ID_BTN_3,ID_BTN_4,
 	ID_BTN_5,ID_BTN_6,ID_BTN_7,ID_BTN_8,ID_BTN_9,ID_BTN_PI,
 	ID_BTN_PD,ID_BTN_PG,
-	ID_BTN_MPLUS, ID_BTN_MRESET, ID_BTN_MCLEAR,
+	ID_BTN_MPLUS, ID_BTN_MRESET, ID_BTN_MCLEAR, 
 	ID_TXT_CALCINPUT
 };
 
@@ -25,10 +25,10 @@ class MainFrame : public wxFrame{ //dérivée de wxFrame
 	protected:
 
 		string calcul;
-		wxTextCtrl *txtCalcInput; //Zone d'affichage du calcul
+		wxTextCtrl *txtCalcInput, *textValeur; //Zone d'affichage du calcul
 		wxBoxSizer *sizer_principal; //Size principal
 		wxGridSizer *gridButton; //Grille bouttons
-		
+		wxString save=wxT("");
 
 /************* B U T T O N S ******************************************************************************/
 		wxButton *btnArcSin,*btnArcCos,*btnArcTan,*btnSin,*btnCos,*btnTan; //Fonction trigo
