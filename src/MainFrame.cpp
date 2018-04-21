@@ -69,8 +69,11 @@ MainFrame::MainFrame(const wxString title,const wxPoint& pos, const wxSize& size
 /***********    L I G N E    3   ******************/
 	btnModulo = new wxButton(this, ID_BTN_MODULO, _T("%")); // Création du bouton Modulo
 	btnMclear = new wxButton(this, ID_BTN_MCLEAR, _T("MC")); // Création du bouton MCLEAR
+	btnMclear->Disable();
 	btnMplus = new wxButton(this, ID_BTN_MPLUS, _T("M+")); // Création du bouton MPLUS, 
 	btnMreset = new wxButton(this, ID_BTN_MRESET, _T("MR")); // Création du bouton MRESET
+	btnMreset->Disable();
+
 	btnPuiss = new wxButton(this, ID_BTN_PUISS, _T("Puiss")); // Création du bouton Puissance
 
 	btnModulo->SetBackgroundColour(wxColour(255,255,0,100));
@@ -307,7 +310,7 @@ void MainFrame::OnButton_9_Clicked(wxCommandEvent &event){
 	calcul+="9";
 }
 void MainFrame::OnButton_PI_Clicked(wxCommandEvent &event){
-	*txtCalcInput << wxString::FromUTF8("\xF0\x9D\x9B\x91");//"\u03C0"; //Affiche PI
+	*txtCalcInput << "PI"; //Affiche PI
 	calcul+=PI; //Mais ecrit 3.14 entre parenthèse pour protéger la valeur
 }
 void MainFrame::OnButton_PG_Clicked(wxCommandEvent &event){
@@ -344,6 +347,8 @@ void MainFrame::OnButton_MCLEAR_Clicked(wxCommandEvent &event){
 	//La touche MC permet d’effacer la mémoire.
 	if(!save.empty())
 		{save.clear();}
+		btnMclear->Disable();
+		btnMreset->Disable();
 	//Penser à déactiver un bouton MC dans le cas où y a rien dans la mémoire (regarder comment le déactiver )
 	
 }
@@ -352,13 +357,14 @@ void MainFrame::OnButton_MPLUS_Clicked(wxCommandEvent &event){
 	double val;
 	if(txtCalcInput->GetValue() .ToDouble(&val))
     {   
- 	if(!save.empty()){
-    		save.clear(); //effacer le contenu de la chaine si la varaibale save n'est pas vide.
-    	}
-    	save <<val;
-   		}	
+	 	if(!save.empty()){
+	    		save.clear(); //effacer le contenu de la chaine si la varaibale save n'est pas vide.
+	    	}
+	    	save <<val;
+	    btnMclear->Enable();
+   		btnMreset->Enable();
+	}	
 }
-
 void MainFrame::OnButton_MRESET_Clicked(wxCommandEvent &event){
 
 	 //La touche MR permet d'afficher la valeur de la mémoire
