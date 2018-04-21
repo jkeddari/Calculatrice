@@ -67,10 +67,10 @@ MainFrame::MainFrame(const wxString title,const wxPoint& pos, const wxSize& size
 	gridButton->Add(btnTan,0,wxEXPAND);
 
 /***********    L I G N E    3   ******************/
-	btnModulo = new wxButton(this, -1, _T("%")); // Création du bouton Modulo
-	btnMclear = new wxButton(this, -1, _T("MC")); // Création du bouton MCLEAR
-	btnMplus = new wxButton(this, -1, _T("M+")); // Création du bouton MPLUS
-	btnMreset = new wxButton(this, -1, _T("MR")); // Création du bouton MRESET
+	btnModulo = new wxButton(this, ID_BTN_MODULO, _T("%")); // Création du bouton Modulo
+	btnMclear = new wxButton(this, ID_BTN_MCLEAR, _T("MC")); // Création du bouton MCLEAR
+	btnMplus = new wxButton(this, ID_BTN_MPLUS, _T("M+")); // Création du bouton MPLUS, 
+	btnMreset = new wxButton(this, ID_BTN_MRESET, _T("MR")); // Création du bouton MRESET
 	btnPuiss = new wxButton(this, ID_BTN_PUISS, _T("Puiss")); // Création du bouton Puissance
 
 	btnModulo->SetBackgroundColour(wxColour(255,255,0,100));
@@ -254,6 +254,8 @@ void MainFrame::OnButton_MOINS_Clicked(wxCommandEvent &event){
 	calcul+="-";
 }
 void MainFrame::OnButton_MODULO_Clicked(wxCommandEvent &event){
+
+//il s'agit d'une fonction pourcentage et pas modulo à implementer(demain)
 	
 }
 void MainFrame::OnButton_POINT_Clicked(wxCommandEvent &event){
@@ -339,13 +341,29 @@ void MainFrame::OnButton_EGAL_Clicked(wxCommandEvent &event){
 }
 
 void MainFrame::OnButton_MCLEAR_Clicked(wxCommandEvent &event){
-	/*TODO*/
+	//La touche MC permet d’effacer la mémoire.
+	if(!save.empty())
+		{save.clear();}
+	//Penser à déactiver un bouton MC dans le cas où y a rien dans la mémoire (regarder comment le déactiver )
+	
 }
-void MainFrame::OnButton_MPLUS_Clicked(wxCommandEvent &event){
-	/*TODO*/
+void MainFrame::OnButton_MPLUS_Clicked(wxCommandEvent &event){ 
+	//La touche M+ permet d’ajouter le nombre actuellement affiché sur l'écran de la calculatrice à la mémoire
+	double val;
+	if(txtCalcInput->GetValue() .ToDouble(&val))
+    {   
+ 	if(!save.empty()){
+    		save.clear(); //effacer le contenu de la chaine si la varaibale save n'est pas vide.
+    	}
+    	save <<val;
+   		}	
 }
+
 void MainFrame::OnButton_MRESET_Clicked(wxCommandEvent &event){
-	/*TODO*/
+
+	 //La touche MR permet d'afficher la valeur de la mémoire
+   txtCalcInput->SetValue(save);
+   calcul=save; //sauvgarder l'element stoker en mémoire dans Calcul
 }
 
 
