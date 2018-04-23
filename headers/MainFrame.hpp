@@ -80,8 +80,6 @@ class MainFrame : public wxFrame{ //dérivée de wxFrame
 		void OnButton_MCLEAR_Clicked(wxCommandEvent &event);
 		void OnButton_MR_Clicked(wxCommandEvent &event);
 		
-
-
 		DECLARE_EVENT_TABLE()
 
 };

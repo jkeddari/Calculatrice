@@ -257,9 +257,8 @@ void MainFrame::OnButton_MOINS_Clicked(wxCommandEvent &event){
 	calcul+="-";
 }
 void MainFrame::OnButton_MODULO_Clicked(wxCommandEvent &event){
-
-//il s'agit d'une fonction pourcentage et pas modulo à implementer(demain)
-	
+ *txtCalcInput << "%";
+ calcul+="%";
 }
 void MainFrame::OnButton_POINT_Clicked(wxCommandEvent &event){
 	*txtCalcInput << ".";

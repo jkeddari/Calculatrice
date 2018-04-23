@@ -67,6 +67,7 @@ TEST_CASE( "Calculator", "All" ){
 	Calculator c18("fact(4.5)");
 	CHECK(c18.getResult() == "11.631728");
 
-
+	Calculator c19("10%2");
+	CHECK(c19.getResult() == "0");
 
 }

@@ -24,7 +24,7 @@ void Priority::fill_priority(){
 	op["("]=1;
 }
 
-double factoriel(long double n)
+int factoriel(long double n)
 {
    double resultat;
 
@@ -52,6 +52,21 @@ double factoriel(long double n)
    return resultat;   
 }
 
+double modulo(int n, int n1)
+{
+	double r;
+	r= n % n1 ;
+	if(n==0)
+	{
+		return r=0;
+	}
+	else if (n1==0)
+	{
+		throw Erreur(1,"inf",2);
+	}
+	
+	return r;
+}
 
 string exec_calc(string a, string b, string op){
 	double x(atof(a.c_str())),y(atof(b.c_str()));
@@ -72,6 +87,8 @@ string exec_calc(string a, string b, string op){
 	if(op=="log") result=log10(x);
 	if(op=="fact") result=factoriel(x);
 	if(op=="n") result=-x;
+	if(op=="%") result=modulo(x,y);
+	
 
 	//if(op=="ln") result=ln(x);
 
