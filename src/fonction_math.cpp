@@ -24,7 +24,7 @@ void Priority::fill_priority(){
 	op["("]=1;
 }
 
-int factoriel(long double n)
+double factoriel(long double n)
 {
    double resultat;
 
@@ -52,7 +52,7 @@ int factoriel(long double n)
    return resultat;   
 }
 
-double modulo(int n, int n1)
+int modulo(int n, int n1)
 {
 	double r;
 	r= n % n1 ;

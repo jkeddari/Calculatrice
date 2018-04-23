@@ -25,7 +25,7 @@ struct Priority{
 double factoriel(long double n); // Calculer le factoriel d'un nombre, (le factroriel d'un nombre négatif n'existe pas)
 bool is_operator(string s); //Test si le paramètre est un operateur
 bool is_operand(string s); //Test si l'operand est un nombre
-double modulo(int n, int n1); // fontion modulo
+int modulo(int n, int n1); // fontion modulo
 /*********************************************************************************
 	Prend en entrée 3 string, a=chiffre 1, b=chiffre 2 et op=opération à faire
 	Renvoie le resultat sous forme de string
