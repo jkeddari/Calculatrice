@@ -84,7 +84,7 @@ bool Calculator::bad_input(){
 			f_point=false;
 		}
 		else if(op_size_2.find(this->calcul.substr(i,2)) != string::npos){
-			if(i>0 and (op_size_1.find(this->calcul.at(i-1)) == string::npos and this->calcul.at(i-1)!='(')){return false;} 
+			if(i>0 and (op_size_1.find(this->calcul.at(i-1)) == string::npos and (this->calcul.at(i-1)!='(') and this->calcul.at(i-1)!='n')){return false;} 
 			i+=1;
 			
 			f_operator=true;
@@ -92,7 +92,7 @@ bool Calculator::bad_input(){
 			
 		}
 		else if(op_size_3.find(this->calcul.substr(i,3)) != string::npos){
-			if(i>0 and (op_size_1.find(this->calcul.at(i-1)) == string::npos and this->calcul.at(i-1)!='(')){return false;} 
+			if(i>0 and (op_size_1.find(this->calcul.at(i-1)) == string::npos  and (this->calcul.at(i-1)!='(') and this->calcul.at(i-1)!='n') ){cout <<"erro" <<endl;return false;} 
 			i+=2;
 			
 			f_operator=true;
@@ -100,7 +100,7 @@ bool Calculator::bad_input(){
 			
 		}
 		else if(op_size_4.find(this->calcul.substr(i,4)) != string::npos){
-			if(i>0 and (op_size_1.find(this->calcul.at(i-1)) == string::npos and this->calcul.at(i-1)!='(')){return false;} 
+			if(i>0 and (op_size_1.find(this->calcul.at(i-1)) == string::npos and (this->calcul.at(i-1)!='(') and this->calcul.at(i-1)!='n')){return false;} 
 			i+=3;
 			
 			f_operator=true;
@@ -108,7 +108,7 @@ bool Calculator::bad_input(){
 			
 		}
 		else if(op_size_5.find(this->calcul.substr(i,5)) != string::npos){
-			if(i>0 and (op_size_1.find(this->calcul.at(i-1)) == string::npos and this->calcul.at(i-1)!='(')){return false;} 
+			if(i>0 and (op_size_1.find(this->calcul.at(i-1)) == string::npos and (this->calcul.at(i-1)!='(') and this->calcul.at(i-1)!='n')){return false;} 
 			i+=4;
 			
 			f_operator=true;
