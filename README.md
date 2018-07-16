@@ -2,7 +2,7 @@
 Projet pour le cours de Programmation Orienté Objet
 Calculatrice avec wxWidget
 
-By Christopher BERGONT, Hugo FERRANTE, Mohamed AMINE et Jordan KEDDARI
+By Christopher B, Hugo F, Mohamed A et Jordan K
 
 UTILISATION : 
 
